@@ -456,7 +456,7 @@ namespace SeanSmithBlackJackWInforms
             }
             else if (DealerHandValue > PlayerHandOneValue)
             {
-                WinOrLossLabel.Text = String.Format("Dealder wins.  player value {0} - Dealer value{1}", PlayerHandOneValue, DealerHandValue);
+                WinOrLossLabel.Text = String.Format("Dealder wins.  player value {0} - Dealer value {1}", PlayerHandOneValue, DealerHandValue);
             }
             else if (DealerHandValue == PlayerHandOneValue)
             {
@@ -501,7 +501,7 @@ namespace SeanSmithBlackJackWInforms
             }
             else if (DealerHandValue > PlayerHandTwoValue)
             {
-                HandTwoWLLabel.Text = String.Format("Dealder wins.  player value {0} - Dealer value{1}", PlayerHandOneValue, DealerHandValue);
+                HandTwoWLLabel.Text = String.Format("Dealder wins.  player value {0} - Dealer value {1}", PlayerHandOneValue, DealerHandValue);
             }
             else if (DealerHandValue == PlayerHandTwoValue)
             {
@@ -654,7 +654,6 @@ namespace SeanSmithBlackJackWInforms
             HandOneCardSeven.Visible = false;
             WinOrLossLabel.Visible = false;
 
-            Console.WriteLine(String.Format("Hand Reset: PlayerHandValue{0}, DealerHandValue{1}, BetAmount{2}, BankRoll{3}", PlayerHandOneValue, DealerHandValue, BetAmount, BankRoll));
         }
 
         private async void HandOneDouble_Click(object sender, EventArgs e)
@@ -667,6 +666,10 @@ namespace SeanSmithBlackJackWInforms
             BetAmount += BetAmount;
             CardResponse nextCard = await drawCard();
             var card = nextCard.cards.First();
+            string bet_string = "bet amount: " + BetAmount.ToString();
+            BetLabel.Text = bet_string;
+            string bankroll_string = "BankRoll Amount: " + BankRoll.ToString();
+            BankRollLabel.Text = bankroll_string;
 
             HandOneCardThree.Load(card.image);
             HandOneCardThree.Visible = true;
@@ -692,9 +695,9 @@ namespace SeanSmithBlackJackWInforms
                 DealButton.Enabled = true;
                 ClearBet.Enabled = true;
                 BetAmount = 0;
-                string bet_string = "bet amount: " + BetAmount.ToString();
+                bet_string = "bet amount: " + BetAmount.ToString();
                 BetLabel.Text = bet_string;
-                string bankroll_string = "BankRoll Amount: " + BankRoll.ToString();
+                bankroll_string = "BankRoll Amount: " + BankRoll.ToString();
                 BankRollLabel.Text = bankroll_string;
                 return;
             }
